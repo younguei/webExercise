@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数接受参数并弹出</title>
+	<style type="text/css" media="screen">
+		.box{
+			width: 450px;
+			text-align: center;
+			padding:50px;
+			margin:10px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var city = document.getElementById("city");
+			var block = document.getElementById("block");
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				myFun(city.value,block.value);
+			}
+		}
+		function myFun(a,b){
+			alert(a);
+			alert(b);
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<input type="text" name="city" id="city"  placeholder="北京市" /><br>
+		<input type="text" name="block" id="block" placeholder="朝阳区"/><br>
+		<button type="button" id="btn">传参</button>
+	</div>
+	<div class="note">
+		<h3>疑问：获取文本框的值</h3>
+		<p>1. var city = document.getElementById("city").value; console.log(city)<strong>无法获取文本输入的值</strong></p>
+		<p>2. var city = document.getElementById("city"); console.log(city.value);<strong>可以获取本文框的值</strong></p>
+		<h3>解决：</h3>
+		<p>因为在input的html代码中没有value这个属性，该属性是后来动态添加的，所以var city = document.getElementById("city").value为空值</p>
+		<p>var city = document.getElementById("city").value 这样写后就将city值绑定为<strong>初始化input中的value值，当input值修改后，不会发生变化</strong></p>
+	</div>
+</body>
+</html>
