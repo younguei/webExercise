@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页换肤</title>
+	<style type="text/css" media="screen">
+		body{
+			background-color: gray;
+		}
+		.head{
+			width: 427px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#changeWebColorBtn{
+			padding: 0;
+		}
+		#changeWebColorBtn li{
+			width:5px;
+			height:5px;
+			padding: 4px;
+			font-size: 0px;
+			display: inline-block;
+			background-color: orange;
+			cursor:pointer;
+		}
+		#changeWebColorBtn li:nth-child(1){
+			background: red;
+		}
+		#changeWebColorBtn li:nth-child(2){
+			background: green;
+		}
+		#changeWebColorBtn li:nth-child(3){
+			background: black;
+		}
+
+		#navigator li{
+			display: inline-block;
+			list-style: none;
+			padding: 5px 15px;
+			text-align: center;
+		}
+		#navigator li a{
+			font-size: 20px;
+			color: #fff;
+			text-decoration: none;
+		}
+		#navigator li+li{
+			border-left: 1px solid white;
+		}
+		#navigator{
+			padding: 0px;
+			display: inline-block;
+			font-size: 0px;
+			border: 1px solid white;
+		}
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="red.css">
+	<script type="text/javascript">
+		window.onload = function(){
+			var linkCss = document.getElementsByTagName("link")[0];
+			var changeBtn = document.getElementById("changeWebColorBtn").getElementsByTagName("li");
+			for(var i=0;i<changeBtn.length;i++){
+				changeBtn[i].onclick = function(){
+					linkCss.setAttribute("href",this.className+".css")
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="head">
+		<ul id="changeWebColorBtn">
+			<li class="red"></li>
+			<li class="green"></li>
+			<li class="black"></li>
+		</ul>
+		<ul id="navigator">
+			<li><a href="#">新闻</a></li>
+			<li><a href="#">娱乐</a></li>
+			<li><a href="#">体育</a></li>
+			<li><a href="#">电影</a></li>
+			<li><a href="#">音乐</a></li>
+			<li><a href="#">旅游</a></li>
+		</ul>
+	</div>
+	<div class="note">
+		<p>1. 关于style行内样式 优先级别最高 </p>
+	</div>
+</body>
+</html>
