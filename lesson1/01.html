@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制div属性</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:300px;
+			padding: 20px;
+			margin: 10px auto;
+			text-align: center;
+			border:1px solid black;
+			border-radius: 10px;
+		}
+		#innerbox{
+			width:200px;
+			margin-top: 10px;
+			margin-left: auto;
+			margin-right: auto;
+			height: 150px;
+			background-color: black;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btnArr = document.getElementById("controlBtn").getElementsByTagName("button");
+			var box = document.getElementById("innerbox");
+			// btnArr[0].onclick = function(){
+			// 	box.style.width = "300px";
+			// }
+			// btnArr[1].onclick = function(){
+			// 	box.style.height = "250px";
+			// }
+			// btnArr[2].onclick = function(){
+			// 	box.style.backgroundColor = "red";
+			// }
+			// btnArr[3].onclick = function(){
+			// 	box.style.display = "none";
+			// }
+			// btnArr[4].onclick = function(){
+			// 	box.style = "";
+			// }
+
+
+			// 参考代码
+			function changeStyle(ele,attr,val){
+				ele.style[attr] = val;
+			}
+			var attr = ["width","height","backgroundColor","display","display"];
+			var val = ["300px","250px","red","none","block"];
+			// btnArr.forEach(function(element,index){
+			// 	element.onclick = function(){
+			// 		changeStyle(this,attr[index],val[index]);
+			// 	}
+			// });
+			for(var i=0;i<btnArr.length;i++){
+				btnArr[i].setAttribute("index",i);
+				btnArr[i].onclick = function(){
+					
+					var index = this.getAttribute("index");
+					index == btnArr.length - 1 && (box.style.cssText = "");
+					changeStyle(box,attr[index],val[index]);
+				}
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div id="controlBtn">
+			<button type="button" class="btn ">变宽</button>
+			<button type="button" class="btn ">变高</button>
+			<button type="button" class="btn ">变色</button>
+			<button type="button" class="btn ">隐藏</button>
+			<button type="button" class="btn ">重置</button>
+		</div>
+		<div id="innerbox" class="test"></div>
+	</div>
+	<div class="note">
+		<h3>如何获取样式 同时获取行间样式和内联样式和嵌入式样式</h3>
+		<p>1. getComputedStyle(目标对象).相关样式名  getComputedStyle(box).width 获取计算后的样式 </p>
+		<p>2. element.style.styleName = styleValue 设置element元素的css样式 styleName需要使用驼峰标记  设置的是行间css样式</p>
+		<p>3. element.getAttribute("attribute") 获取的是元素的属性 <strong>比如style id等属性  注意获取的不是css样式</strong>
+		<br>
+		box.class 无法获取box的class值  需要使用box.className 也可以使用 box.getAttribute("class")获取
+		</p>
+		<p>4. cssText本质就是设置html元素的style属性值<br>
+			document.getElementById("box").style.cssText = "color:red,font-size:20px";
+		</p>
+		<p>5. index == btnArr.length - 1 && (box.style.cssText = ""); 当为最后一个btn的时候为真 执行后面的语句 将style中样式清空</p>
+		<p>6. javascript中运算符的优先级：算数 > 关系 > 逻辑 > 赋值</p>
+	</div>
+</body>
+</html>
