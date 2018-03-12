@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移入/移出改变样式</title>
+	<style type="text/css" media="screen">
+		#innerbox{
+			width:150px;
+			height: 150px;
+			border: 5px solid black;
+			background: black;
+			padding:20px;
+			color:white;
+			margin: 5px auto;
+		}
+		/*.innerbox:hover{
+			border:5px solid red;
+			background: white;
+			color:red;
+
+		}*/
+		#innerbox.hoverDiv{
+			border:5px solid red ;
+			background: white ;
+			color:red ;
+		}
+	</style>
+	<script type="text/javascript">
+      	window.onload = function(){
+      		var innerbox = document.getElementById("innerbox");
+      		innerbox.onmouseover = function(){
+      			this.setAttribute("class","hoverDiv");
+      		};
+      		innerbox.onmouseout = function(){
+      			this.setAttribute("class","");
+      		}
+      	}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div id="innerbox">
+			鼠标移入改变样式，鼠标移出恢复。
+		</div>
+	</div>
+	<div class="note">
+		<p>1. 设置元素的class元素 可以使用 element.setAttribute("class","...")</p>
+		<p>2. 设置元素的class元素 可以使用 element.classsName = "..."</p>
+		<p>3. css选择器的优先级问题 所以必须使用#innerbox.hoverDiv</p>
+	</div>
+</body>
+</html>
