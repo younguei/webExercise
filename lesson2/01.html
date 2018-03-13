@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度输入法</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:100px;
+			margin: 10px auto;
+		}
+		#toggleBtn {
+			cursor: pointer;
+		}
+		#innerbox{
+			display:none;
+		}
+		#innerbox ul{
+			list-style:none;
+			width:60px;
+			padding:0px;
+			border: 1px solid black;
+		}
+		#innerbox ul li{
+			padding-left: 10px;
+			padding-right: 10px;
+			width:40px;
+			padding-top:2px;
+			padding-bottom:2px;
+		}
+		#innerbox ul li:hover{
+			background: #d9e1f6;
+		}
+		#innerbox ul li a{
+			text-decoration: none;
+		}
+
+		#closeBtn{
+			border-top:1px solid black;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var toggleBtn = document.getElementById("toggleBtn");
+			var innerbox= document.getElementById("innerbox");
+			toggleBtn.onclick = function(){
+				var show = getComputedStyle(innerbox).display;
+				console.log(show);
+				if(show === "none"){
+					innerbox.style.display = "block";
+				}else{
+					innerbox.style.display = "none";
+				}
+			}
+
+			var closeBtn = document.getElementById("closeBtn");
+			closeBtn.onclick = function(){
+				innerbox.style.display = "none";
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<button type="button" id="toggleBtn">输入法</button>
+		<div id="innerbox">
+			<ul>
+				<li>
+					<a href="#" id="shouxie">手写</a>
+				</li>
+				<li>
+					<a href="#" id="pinying">拼音</a>
+				</li>
+				<li id="closeBtn">
+					<a href="#" >关闭</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="note">
+		<p>1. 在使用if...else语句的时候可以替换为三元运算符 innerbox.style.display = innerbox.style.display==="none"?"block":"none";</p>
+	</div>
+</body>
+</html>
