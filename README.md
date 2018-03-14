@@ -14,3 +14,6 @@
 3. [求出数组中所有数字的和](https://younguei.github.io/webExercise/lesson2/03.html)
 4. [弹出层效果](https://younguei.github.io/webExercise/lesson2/04.html)
 5. [函数传参，改变Div任意属性的值](https://younguei.github.io/webExercise/lesson2/05.html)
+6. [图片列表：鼠标移入/移出改变图片透明度](https://younguei.github.io/webExercise/lesson2/06.html)
+7. [简易选项卡](https://younguei.github.io/webExercise/lesson2/07.html)
+8. [简易JS年历](https://younguei.github.io/webExercise/lesson2/08.html)

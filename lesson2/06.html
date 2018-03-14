@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片列表：鼠标移入/移出改变图片透明度</title>
+	<style type="text/css" media="screen">
+		*{
+			box-sizing: border-box;
+		}
+		.box{
+			width:702px;
+			margin-left: auto;
+			margin-right: auto;
+			border:1px solid black;
+		}
+		#list{
+			list-style: none;
+			padding:0;
+			margin:0;
+			width:700px;
+			overflow: hidden;
+		}
+		#list li{
+			width:130px;
+			height:130px;
+			opacity:0.5;
+			filter:alpha(opacity=50);
+			margin:5px;
+			float:left;
+			cursor:pointer;
+			border:1px solid black;
+		}
+		#list li:hover{
+			opacity:1;
+			filter:alpha(opacity=100);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul id="list">
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/1.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/2.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/3.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/4.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/5.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/6.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/7.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/8.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/9.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/10.jpg" alt=""></li>
+		</ul>
+	</div>
+	<div class="note">
+		<p>1. box-sizing:content-box(默认值)/box-sizing;</p>
+		<p>content-box:表示设置的width和height只是包括内容区的尺寸,假若后续设置了边框和padding那么该元素占用的位置还会变大</p>
+		<p>box-sizing: 表示设置的width和height包括了内容区和边框和padding，内容区域的高宽为设置的高度减去padding和border</p>
+		<p>2. opacity:value IE更早版本filter:alpha(opacity=value)</p>
+		<p>该功能用js实现 就是onmouserover添加改变class名事件即可</p>
+	</div>
+</body>
+</html>
