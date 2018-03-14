@@ -12,4 +12,5 @@
 1. [百度输入法](https://younguei.github.io/webExercise/lesson2/01.html)
 2. [点击Div，显示其innerHTML](https://younguei.github.io/webExercise/lesson2/02.html)
 3. [求出数组中所有数字的和](https://younguei.github.io/webExercise/lesson2/03.html)
-
+4. [弹出层效果](https://younguei.github.io/webExercise/lesson2/04.html)
+5. [函数传参，改变Div任意属性的值](https://younguei.github.io/webExercise/lesson2/05.html)

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数传参，改变Div任意属性的值</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:302px;
+			margin-right:auto;
+			margin-left:auto;
+		}
+		#showExample{
+			width:150px;
+			height: 150px;
+			padding:10px;
+			font-size: 12px;
+			border:1px solid black;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var attributeName1 = document.getElementById("attributeName");
+			var attributeValue1 = document.getElementById("attributeValue");
+			var submitBtn = document.getElementById("submit");
+			var reset = document.getElementById("reset");
+			var showExample = document.getElementById("showExample");
+
+			submitBtn.onclick = function(){
+				console.log(attributeName.value,attributeValue.value)
+				changeStyle(showExample,attributeName.value,attributeValue.value);
+			}
+			reset.onclick = function(){
+				showExample.style = "";
+				attributeName.value = "";
+				attributeValue.value = "";
+			}
+		}
+
+		function changeStyle(element,name,value){
+			element.style[name] = value;
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div id="formInput">
+			<p><label for="attributeName">属性名:</label><input type="text" name="" id="attributeName"></p>
+			<p><label for="attributeValue">属性值:</label><input type="text" name="" id="attributeValue"></p>
+			<p>
+				<button type="button" id="submit">确定</button>
+				<button type="button" id="reset">重置</button>
+			</p>
+		</div>
+		<div id="showExample">
+			在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。
+		</div>
+	</div>
+	<div class="note">
+		<p>1. label的for属性为绑定的表单控件的id属性值</p>
+		<p>2. <strong>元素的style属性是一个对象</strong> 可以使用方括号访问 style['width']</p>
+	</div>
+</body>
+</html>
