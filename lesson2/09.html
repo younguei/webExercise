@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单一按钮显示/隐藏</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:200px;
+			border:1px solid #ccc;
+			margin:20px auto;
+			font-size: 12px;
+		}
+		.box h3{
+			margin: 0;
+			position: relative;
+			border:1px solid #fff;
+			padding:10px 5px;
+			background: #ced3d7;
+			cursor: pointer;
+		}
+		.box ul{
+			list-style: none;
+			padding-left:0px;
+			margin:0;
+		}
+		.box ul li{
+			height:25px;
+			padding-left:10px;
+			background: #e9edf2;
+			line-height: 25px;
+		}
+		.box ul li:hover{
+			background: #fff;
+			cursor: pointer;
+		}
+		/*制作展开关闭箭头*/
+		.box h3 div.clicked{
+			height: 0px;
+			width: 0px;
+			position: absolute;
+			right:10px;
+			bottom:12px;
+			border-width: 5px;
+			border-style: solid;
+			border-color: #000 transparent transparent transparent;
+		}
+		.box h3 div.unclick{
+			position: absolute;
+			right:10px;
+			bottom:17px;
+			border-width: 5px;
+			border-style: solid;
+			border-color:  transparent transparent #000 transparent;
+		}
+	</style>
+	<script type="text/javascript"		>
+		window.onload = function(){
+			var title= document.getElementsByTagName("h3")[0];
+			var listItem = document.getElementById("listItem");
+			var caret = document.getElementById("caret");	
+            title.onclick = function(){
+            	var show = listItem.style.display;
+            	var name = caret.className;
+            	if(name === "clicked"){
+            		caret.className = "unclick";
+            	}else{
+            		caret.className = "clicked";
+            	}
+            	if(show === "none"){
+            		listItem.style.display = "block";
+            	}else{
+            		listItem.style.display = "none";
+            	}
+            }
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<h3>播放列表...<div class="clicked" id="caret"></div></h3>
+		<ul id="listItem">
+			<li><a href="#">玩家之徒 - 蔡依林</a></li>
+			<li><a href="#">原谅我就是这样的女生 - 戴佩妮</a></li>
+			<li><a href="#">猜不透 - 丁当</a></li>
+			<li><a href="#">自导自演 - 周杰伦</a></li>
+			<li><a href="#">浪漫窝 - 弦子</a></li>
+			<li><a href="#">流年 - 王菲</a></li>
+		</ul>
+	</div>
+	<div class="note">
+		<p>1. 实现小三角效果</p>
+		<p>将div的宽高设为0;只为它设置边框。border-style:solid;border-width:3px;border-color:red transparent transparent transparent ;</p>
+	</div>
+</body>
+</html>

@@ -17,3 +17,7 @@
 6. [图片列表：鼠标移入/移出改变图片透明度](https://younguei.github.io/webExercise/lesson2/06.html)
 7. [简易选项卡](https://younguei.github.io/webExercise/lesson2/07.html)
 8. [简易JS年历](https://younguei.github.io/webExercise/lesson2/08.html)
+9. [单一按钮显示/隐藏](https://younguei.github.io/webExercise/lesson2/09.html)
+10. [提示框效果](https://younguei.github.io/webExercise/lesson2/10.html)
+11. [鼠标移过，改变图片路径](https://younguei.github.io/webExercise/lesson2/11.html)
+12. [复选框(checkbox)全选/全不选/反选](https://younguei.github.io/webExercise/lesson2/12.html)

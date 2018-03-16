@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移过，改变图片路径</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:210px;
+			border:1px solid #fff;
+			background: #ccc;
+			border-radius: 10px;
+			margin:100px auto;
+			padding:5px;
+		}
+		.box #listItem {
+			padding:0;
+			margin:0;
+			list-style: none;
+			overflow: hidden;
+		}
+		.box #listItem li{
+			float:left;
+			width:50px;
+			height:50px;
+			margin-top:2px;
+			margin-left:2px;
+			cursor:pointer;
+		}
+		.box #listItem .showPlace{
+			width:154px;
+			height: 154px;
+		}
+		.showPlace img{
+			width:154px;
+			height: 154px;
+		}
+		img{
+			border-radius:5px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var aImg = document.getElementById("listItem").getElementsByTagName("img");
+			for(var i=1;i<aImg.length;i++){
+				aImg[i].onmouseover = function(){
+					var src = this.src.replace("small","big");
+					aImg[0].src = src;
+					// console.log(src);
+					// http://www.fgm.cc/learn/lesson2/img/big_3.jpg
+					// http://www.fgm.cc/learn/lesson2/img/small_3.jpg
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul id="listItem">
+			<li class="showPlace"><img src="http://www.fgm.cc/learn/lesson2/img/big_1.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_1.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_2.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_3.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_4.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_5.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_6.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_7.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_8.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_9.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_10.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson2/img/small_11.jpg" alt=""></li>
+		</ul>
+	</div>
+	<div class="note">
+		<p>1. 字符串替换 str.replace(regexp/substr,replacement)</p>
+	</div>
+</body>
+</html>

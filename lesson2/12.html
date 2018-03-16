@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框(checkbox)全选/全不选/反选</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:100px;
+			padding:10px;
+			border:1px solid #ccc;
+			border-radius: 5px;
+			margin:10px auto;
+			font-size: 10px;
+			padding-right: 20px;
+		}
+		.box dl input{
+			vertical-align: middle;
+		}
+		.active{
+			display: inline-block;
+			width:24px;
+			padding-left:6px;
+			padding-right: 6px;
+			text-align: center;
+		}
+		.unactive{
+			display: inline-block;
+			width:36px;
+			padding:0px;
+			text-align: center;
+		}
+		.box dl dt a{
+			display: inline-block;
+			margin-left: 20px;
+		}
+		dd{
+			margin:0px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var checkAll = document.getElementById("checkAll");
+			var toggle = document.getElementById("tag");
+			var checkItem = document.getElementsByTagName("dd")[0].getElementsByTagName('input');
+			var checkReverse = document.getElementById("checkReverse");
+			var checkAllItem = false;
+
+			checkAll.onclick = function(){
+				var num = 0;
+				for(var i=0;i<checkItem.lenght;i++){
+					if(checkItem[i].checked){
+						num++;
+					}
+				}
+				if(num === checkItem.length){
+					checkAllItem = true;
+				}
+				if(!checkAllItem){
+					for(var i=0;i<checkItem.length;i++){
+						checkItem[i].checked = "checked";
+					}
+					toggle.innerText = "全不选";
+					toggle.className = "unactive";
+					checkAllItem = true;
+					
+				}else{
+					for(var i=0;i<checkItem.length;i++){
+						checkItem[i].checked = "";
+
+					}
+					toggle.innerText = "全选";
+					checkAllItem = false;
+					toggle.className = "active";					
+				}
+			}
+
+			checkReverse.onclick = function(){
+				for(var i=0;i<checkItem.length;i++){
+					if(checkItem[i].checked ){
+						checkItem[i].checked = "";
+					}else{
+						checkItem[i].checked = "checked";
+					}
+				}
+			}
+
+			//  尚未实现复选个数更新全选框状态
+			for(var i=0;i<checkItem.length;i++){
+				checkItem[i].onclick = function(){
+					var num = 0;
+					for(var j=0;j<checkItem.length;j++){
+						if(checkItem[j].checked){
+							num++;
+						}
+					}
+					console.log(num);
+					if(num == checkItem.length){
+						toggle.innerText = "全不选";
+						checkAll.checked = false;
+						toggle.className = "unactive";
+						
+					}else{
+						toggle.innerText = "全选";
+						checkAll.checked = false;
+						toggle.className = "active";						
+					}
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<dl>
+			<dt><label><input type="checkbox" id="checkAll"><span id="tag" class="active">全选</span></label><a href="#" id="checkReverse">反选</a></dt>
+			<dd>
+				<p><label><input type="checkbox">选项(一)</label></p>
+				<p><label><input type="checkbox">选项(二)</label></p>
+				<p><label><input type="checkbox">选项(三)</label></p>
+				<p><label><input type="checkbox">选项(四)</label></p>
+				<p><label><input type="checkbox">选项(五)</label></p>
+				<p><label><input type="checkbox">选项(六)</label></p>
+				<p><label><input type="checkbox">选项(七)</label></p>
+				<p><label><input type="checkbox">选项(八)</label></p>
+				<p><label><input type="checkbox">选项(九)</label></p>
+				<p><label><input type="checkbox">选项(十)</label></p>
+			</dd>
+		</dl>
+	</div>
+	<div class="note">
+		<p>1. dl 标签用于定义列表 结合dt(title)和dd(data)</p>
+		<p>2. 关于节点：<br>firstChild第一个子节点<br> lastChild第二个子节点 <br>childNodes所有的子节点<br> parentNode父节点 <br>nextSibling同级的下一个节点<br> previousSibling同级的上一个节点</p>
+		<p><strong>3. 根据复选个数来改变全选框 逻辑错误</strong></p>
+		<p><strong>4. 代码还需优化</strong></p>
+	</div>
+</body>
+</html>
