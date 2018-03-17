@@ -21,3 +21,12 @@
 10. [提示框效果](https://younguei.github.io/webExercise/lesson2/10.html)
 11. [鼠标移过，改变图片路径](https://younguei.github.io/webExercise/lesson2/11.html)
 12. [复选框(checkbox)全选/全不选/反选](https://younguei.github.io/webExercise/lesson2/12.html)
+
+#### 第三课
+1. [ 用typeof查看数据类型](https://younguei.github.io/webExercise/lesson3/01.html)
+2. [用parseInt解析数字，并求和](https://younguei.github.io/webExercise/lesson3/02.html)
+3. [ 累加按钮，自加1](https://younguei.github.io/webExercise/lesson3/03.html)
+4. [输入两个数字，比较大小](https://younguei.github.io/webExercise/lesson3/04.html)
+5. [页面加载后累加，自加1](https://younguei.github.io/webExercise/lesson3/05.html)
+6. [判断数字是否为两位数](https://younguei.github.io/webExercise/lesson3/06.html)
+7. [ 网页计算器](https://younguei.github.io/webExercise/lesson3/07.html)

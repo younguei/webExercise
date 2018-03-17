@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断数字是否为两位数</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:250px;
+			margin: 10px auto;
+		}
+		input{
+			width:40px;
+		}
+		span{
+			font-size: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var num1 = document.getElementById("num1");
+			var btn = document.getElementsByTagName("button")[0];
+			var show = document.getElementsByTagName("span")[0];
+			num1.onkeyup = function(){
+				this.value = this.value.replace(/[\D]/,"");
+			}
+			btn.onclick = function(){
+				var num = parseInt(num1.value);
+				if(/^\d{2}$/.test(num)){
+					show.innerText = "这是两位数字";
+				}else{
+					show.innerText = "这不是两位数字";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<input type="text" name="" id="num1">
+		<button type="button">最大的数是</button>
+		<span></span>
+	</div>
+	<div class="note">
+		<p>1. test函数 regExp.test(str) 测试str字符串是否符合regExp表达式</p>
+		<p>/^\d{2}$/.test(num1.value)</p>
+	</div>
+</body>
+</html>

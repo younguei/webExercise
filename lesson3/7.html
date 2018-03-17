@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页计算器</title>
+	<style type="text/css" media="screen">
+		*{
+			box-sizing: border-box;
+		}
+		.box{
+			width:300px;
+			border:1px solid #fff;
+			margin:50px auto;
+			position: relative;
+		}
+		#screen{
+			width:100%;
+			padding:0 10px;
+			height:84px;
+			border:none;
+			border-top-left-radius:20px;
+			border-top-right-radius: 20px;
+			background-color: #ccc;
+			outline: none;
+			text-align: right;
+			line-height: 84px;
+			font-size: 30px;
+			display: inline-block;
+		}
+		.keys{
+			width:100%;
+			padding-bottom: 30px;
+			background:#222222;
+		}
+		ul li{
+			width:63px;
+			height:41px;
+			float:left;
+			background: #666;
+			border-radius: 3px;
+			text-align: center;
+			line-height: 41px;
+			margin-left:9px;
+			margin-top:30px;
+			cursor:pointer;
+			background:url(./btn.png);
+		}
+		ul li[id^="symbol"]{
+			background: url(./btn.png) 0 -41px;
+		}
+		ul li[id^="symbol"]:hover{
+			background: url(./btn.png) -64px -41px;
+		}
+		.zero{
+			background: url(./btn.png) 0 -81px;
+		}
+		.zero:hover{
+			background: url(./btn.png) 0 -122px;
+		}
+		#equal{
+			background: linear-gradient(#888,#666);
+		}
+		#equal:hover{
+			background: linear-gradient(#666,#888);
+		}
+		ul li a{
+			color:white;
+			font-size: 20px;
+			font-weight: bolder;
+			text-decoration: none;
+		}
+		ul li:hover{
+			background:#000;
+			background:url(./btn.png) -64px 0 ;
+		}
+		ul{
+			margin:0;
+			padding:0;
+			position: relative;
+			overflow:hidden;
+			font-size: 0px;
+			list-style: none;
+		}
+		#equal{
+			position: absolute;
+			left:225px;
+			top:243px;
+			margin:0;
+			line-height: 112px;
+			height: 112px;
+			border-radius: 3px;
+			text-align: center;
+		}
+		.zero{
+			width:135px;
+		}
+		#inputNum{
+			width:100%;
+			height:30px;
+			line-height: 30px;
+			font-size: 18px;
+			outline: none;
+			position: absolute;
+			left:0;
+			top:0;
+			text-align: right;
+			background: #ccc;
+			border:none;
+			padding-left: 20px;
+			padding-right: 20px;
+			border-top-left-radius:20px;
+			border-top-right-radius: 20px;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var screen = document.getElementById("screen");
+			var keysLinks = document.getElementsByTagName("a");
+			var keys =  document.getElementsByTagName("li");
+			var symbol6 = document.getElementById("symbol6");
+			var inputNum = document.getElementById("inputNum");
+			screen.value = "0";
+
+			for(var i=0;i<keys.length;i++){
+				keys[i].index = i;
+				keys[i].onclick = function(){
+					var tag = this.id;
+					switch(tag){
+						case "":
+							if(screen.value === "0"){screen.value = ""};
+							if(this.className ==="dot"){screen.value = "0"};
+							screen.value += keysLinks[this.index].innerText;
+							// console.log(screen.value);
+							break;
+						case "symbol1":
+							inputNum.value = "";
+							screen.value = "0";
+							break;
+						case "symbol2":
+							inputNum.value += screen.value + keysLinks[this.index].innerText ;
+							screen.value = "";
+							break;
+						case "symbol3":
+							inputNum.value += screen.value + keysLinks[this.index].innerText ;
+							screen.value = "";
+							break;
+						case "symbol4":
+							inputNum.value += screen.value + keysLinks[this.index].innerText ;
+							screen.value = "";
+							break;
+						case "symbol5":
+							inputNum.value += screen.value + keysLinks[this.index].innerText  ;
+							screen.value = "";
+							break;
+						case "symbol6":
+							inputNum.value += screen.value + keysLinks[this.index].innerText ;
+							screen.value = "";
+							break;
+						case "equal":
+							inputNum.value += screen.value  ;
+							screen.value = eval(inputNum.value);
+							inputNum.value = "";
+							break;
+
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box calculator">
+		<input type="text" name="" id="screen" disabled="disabled">
+		<div class="keys">
+			<ul>
+				<li id="symbol1"><a href="#">C</a></li>
+				<li id="symbol2"><a href="#">%</a></li>
+				<li id="symbol3"><a href="#">/</a></li>
+				<li id="symbol4"><a href="#">*</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#">9</a></li>
+				<li id="symbol5"><a href="#">-</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li id="symbol6"><a href="#">+</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li id="equal"><a href="#">=</a></li>
+				<li class="zero"><a href="#">0</a></li>
+				<li class="dot"><a href="#">.</a></li>
+			</ul>
+		</div>
+		<input type="text" name="" id="inputNum" disabled="disabled">
+	</div>
+	<div class="note">
+		<p>1. border-top-left-radius: border-top-right-radius 只给某一个角设置圆角形状</p>
+		<p>2. eval()函数 计算某个字符串，并执行其中的js代码 eval(string)</p>
+		<h3>
+			几个需要解决的问题:
+		</h3>
+		<p>1. 按完C后,显示0,接着输入数字，前置的0怎么消除</p>
+		<p>解答：每次按键的时候检查是否为0 若是则清空 </p>
+		<p>2. background:为键添加背景图片 背景位置background-position的确定</p>
+		<p>解答：background:url() x y ; x表示水平偏移 正直表示图片向右移动  y表示垂直偏移 向下为正</p>
+		<p>3. Math.round()把一个数字四舍五入为一个整数  并不可以将小数保留几位</p>
+		<p><strong>4. 重点理解这个计算器的计算函数原理</strong></p>
+	</div>
+</body>
+</html>

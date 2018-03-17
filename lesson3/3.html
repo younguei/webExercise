@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>累加按钮，自加1</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:400px;
+			margin:10px auto;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn = document.getElementsByTagName("button")[0];
+			var num = 0;
+			btn.innerText = num;
+			btn.onclick = function(){
+				num++;
+				btn.innerText = num;
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<button type="button"></button>
+	</div>
+</body>
+</html>
