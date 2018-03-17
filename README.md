@@ -23,10 +23,10 @@
 12. [复选框(checkbox)全选/全不选/反选](https://younguei.github.io/webExercise/lesson2/12.html)
 
 #### 第三课
-1. [ 用typeof查看数据类型](https://younguei.github.io/webExercise/lesson3/01.html)
-2. [用parseInt解析数字，并求和](https://younguei.github.io/webExercise/lesson3/02.html)
-3. [ 累加按钮，自加1](https://younguei.github.io/webExercise/lesson3/03.html)
-4. [输入两个数字，比较大小](https://younguei.github.io/webExercise/lesson3/04.html)
-5. [页面加载后累加，自加1](https://younguei.github.io/webExercise/lesson3/05.html)
-6. [判断数字是否为两位数](https://younguei.github.io/webExercise/lesson3/06.html)
-7. [ 网页计算器](https://younguei.github.io/webExercise/lesson3/07.html)
+1. [ 用typeof查看数据类型](https://younguei.github.io/webExercise/lesson3/1.html)
+2. [用parseInt解析数字，并求和](https://younguei.github.io/webExercise/lesson3/2.html)
+3. [ 累加按钮，自加1](https://younguei.github.io/webExercise/lesson3/3.html)
+4. [输入两个数字，比较大小](https://younguei.github.io/webExercise/lesson3/4.html)
+5. [页面加载后累加，自加1](https://younguei.github.io/webExercise/lesson3/5.html)
+6. [判断数字是否为两位数](https://younguei.github.io/webExercise/lesson3/6.html)
+7. [网页计算器](https://younguei.github.io/webExercise/lesson3/7.html)
