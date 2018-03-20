@@ -30,3 +30,8 @@
 5. [页面加载后累加，自加1](https://younguei.github.io/webExercise/lesson3/5.html)
 6. [判断数字是否为两位数](https://younguei.github.io/webExercise/lesson3/6.html)
 7. [网页计算器](https://younguei.github.io/webExercise/lesson3/7.html)
+
+#### 第四课
+1. [  setTimeout应用](https://younguei.github.io/webExercise/lesson4/01.html)
+2. [自动播放一幻灯片效果](https://younguei.github.io/webExercise/lesson4/02.html)
+3. [ 自动改变方向一幻灯片效果](https://younguei.github.io/webExercise/lesson4/03.html)

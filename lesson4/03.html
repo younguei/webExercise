@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动改变方向---幻灯片效果</title>
+	<style type="text/css" media="screen">
+		body{
+			background-color: #ccc;
+		}
+		#box{
+			margin:10px auto;
+			box-sizing: border-box;
+			width:506px;
+			height: 186px;
+			border:8px solid #666;
+			border-radius: 5px;
+			position: relative;
+		}
+		ul{
+			list-style: none;
+			padding:0;
+			margin:0;
+		}
+		ul.listPic li{
+			position: absolute;
+			left:0;
+			top:0;
+			opacity: 0;
+			filter: alpha(opacity=0);
+		}
+		ul.listPic li.activePic{
+			opacity: 1;
+			filter: alpha(opacity=100);
+		}
+		ul.listNum {
+			position: absolute;
+			right:5px;
+			bottom:5px;
+		}
+		ul.listNum li{
+			float:left;
+			width:20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			background-color:#ffb448;
+			border-radius:10px;
+		}
+		ul.listNum li.active{
+			background-color: #f60;
+		}
+		ul.listNum li+li{
+			margin-left: 5px;
+		}
+
+		ul.listNum li a{
+			color:#fff;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var box = document.getElementById("box");
+			var aUl = document.getElementsByTagName("ul");
+			var listPic = aUl[0].getElementsByTagName("li");
+			var listNum = aUl[1].getElementsByTagName("li");
+			var timer = null;
+			var autoTimer = null;
+			var index = 0;
+			var bOrder = true;
+
+			for(var i=0;i<listNum.length;i++){
+				listNum[i].index = i;
+				listNum[i].onmouseover = function(){
+					changePic(this.index);
+					index = this.index;
+				}
+			}
+			box.onmouseover = function(){
+				clearInterval(autoTimer);
+			}
+			box.onmouseout = function(){
+				autoPlay();
+			}
+
+			
+			function autoPlay(){
+				autoTimer = setInterval(function(){
+
+					// 正常排序
+					// index++;
+					// if(index >= listPic.length){
+					// 	index = 0;
+					// }
+
+					// 自动改变方向
+					bOrder? index++:index--;
+					// 判断正序排列结束 开始倒序
+					index >=  listPic.length && (index = listPic.length-2,bOrder=false);
+					// 判断倒序排列结束 开始真序
+					index <= 0 && (index=0,bOrder = true);
+					changePic(index);
+				},3000);
+			}
+			autoPlay();
+
+
+			function changePic(num){
+				for(var i=0;i<listPic.length;i++){
+					listPic[i].style.opacity = 0;
+					listPic[i].style.filter = "alpha(opacity=0)";
+					listNum[i].className = "";
+				}
+				var step = 2;
+				var sum = 0;
+				clearInterval(timer);
+				listNum[num].className = "active";
+				timer = setInterval(function(){
+					sum += step;
+					listPic[num].style.opacity = sum/100;
+					listPic[num].style.filter = "alpha(opacity="+sum+")";
+					if(sum >= 100){
+						clearInterval(timer);
+					}
+				},20);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="listPic">
+			<li class="activePic"><img src="http://www.fgm.cc/learn/lesson4/img/01.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/02.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/03.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/04.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/05.jpg" alt=""></li>
+		</ul>
+		<ul class="listNum">
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+		</ul>
+	</div>
+	<div class="note">
+		<p>关于自动切换左右方向的代码</p>
+		<pre>
+			order = true //开始正序排列
+			order?index++:index--;
+			order &gt;= listPic.length && (index = listPic.length-2,order=false);
+			order &lt;= 0 && (index = 0,order=true); 
+		</pre>
+	</div>
+</body>
+</html>

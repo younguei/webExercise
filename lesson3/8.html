@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易网页时钟</title>
+	<style type="text/css" media="screen">
+		.box{
+			margin:10px auto;
+			width:170px;
+			padding:20px 30px;
+			background: #ccc;
+
+		}
+		span{
+			display: inline-block;
+			width:30px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			background-color: #fff;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function(){
+			var span = document.getElementsByTagName("span");
+			for(var i=0;i<span.length;i++){
+				var time = webClock();
+				span[i].innerText = time[i];
+			}
+			setInterval(showNowTime,1000);
+		}
+		function showNowTime(){
+			var span = document.getElementsByTagName("span");
+			for(var i=0;i<span.length;i++){
+				var time = webClock();
+				span[i].innerText = time[i];
+			}
+		}
+		function webClock(){
+			var nowtime = new Date();
+			var time = [];
+			time.push(nowtime.getHours());
+			time.push(nowtime.getMinutes());
+			time.push(nowtime.getSeconds());
+			return time;
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="clock">
+			<span></span>
+			点
+			<span></span>
+			分
+			<span></span>
+			秒
+		</div>
+	</div>
+</body>
+</html>

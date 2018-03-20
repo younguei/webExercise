@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动播放--幻灯片效果</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:506px;
+			height:186px;
+			margin:10px auto;
+			box-sizing: border-box;
+			border:8px solid #ccc;
+			border-radius:5px;
+			position: relative;
+		}
+		.box .listPic {
+			padding: 0;
+			list-style: none;
+			margin:0;
+			overflow: hidden;
+		}
+		.box .listPic li{
+			position: absolute;
+			width:490px;
+			height: 170px;
+			left:0;
+			top:0;
+			opacity:0;
+			filter:alpha(opacity=0);
+
+		}
+		.box .listPic li.nowPic{
+			opacity:1;
+			filter:alpha(opacity=100);
+		}
+		img{
+			width:490px;
+			height: 170px;
+		}
+
+		.listNum{
+			padding: 0;
+			list-style: none;
+			position: absolute;
+			right: 10px;
+			bottom: 5px;
+			margin:0;
+			overflow: hidden;
+		}
+		.listNum li{
+			float:left;
+			width:20px;
+			height: 20px;
+			text-align: center;
+			font-size: 14px;
+			font-weight: bolder;
+			line-height: 20px;
+			color:#fff;
+			background-color: orange;
+			border-radius: 10px;
+			cursor:pointer;
+		}
+		.listNum li.nowNum{
+			background-color: #f60;
+		}
+		.listNum li+li{
+			margin-left:5px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var listPic = document.getElementById("listPic").getElementsByTagName("li");
+			var listNum = document.getElementById("listNum").getElementsByTagName("li");
+			var ul1 = document.getElementById("listPic");
+			var ul2 = document.getElementById("listNum");	
+			var timer = null;
+			var auto = null;
+			var num = 0;
+			var i = 0;
+
+			// 按钮来切换图片
+			for(i=0;i<listNum.length;i++){
+				listNum[i].index = i;
+				listNum[i].onmouseover = function(){
+					showPic(this.index);
+				}
+			}
+
+			// 图片淡入淡出效果
+			function showPic(index){
+				// 将自动播放的功能索引设为当前值
+				num = index;
+				for(var i=0;i<listPic.length;i++){
+					listPic[i].style.opacity = 0;
+					listPic[i].style.filter = "alpha(opacity = 0)";
+					listNum[i].className = "";
+				}
+				var step = 2;
+				clearInterval(timer);
+				listNum[index].className = "nowNum";
+				timer = setInterval(function(){
+					step += 2;
+					listPic[index].style.opacity = step/100;
+					listPic[index].style.filter = "alpha(opacity = "+step+")";
+					if(step >= 100){
+						clearInterval(timer);
+					}
+				},20);
+			}
+
+			autoPlay();
+			// 自动播放
+			function autoPlay(){
+				
+				auto = setInterval(function(){
+					num++;
+					if(num >= listPic.length){
+						num = 0;
+					}
+					showPic(num);
+				},2000);
+			}
+
+			// 鼠标移入图片则停止自动播放
+			ul1.onmouseover = function(){
+				clearInterval(auto);
+			}
+			// 鼠标移出图片开始自动播放
+			ul1.onmouseout = function(){
+				autoPlay();
+			}
+
+		}
+		
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="listPic" id="listPic">
+			<li class="nowPic"><img src="http://www.fgm.cc/learn/lesson4/img/01.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/02.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/03.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/04.jpg" alt=""></li>
+			<li><img src="http://www.fgm.cc/learn/lesson4/img/05.jpg" alt=""></li>
+		</ul>
+		<ul class="listNum" id="listNum">
+			<li class="nowNum">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div class="note">
+		<p>1. 两个函数 自动播放函数 图片切换函数 </p>
+		<p>2. 实现的功能：图片自动播放 鼠标移入图片停止自动播放 鼠标移出图片开始自动播放 鼠标移入右角标图片切换 </p>
+		<p>3. <strong>注意</strong>：当鼠标切换图片后，自动播放下一张 不是从头开始播放 需要将<strong>自动切换图片函数</strong>和<strong>鼠标切换图片函数</strong>的索引值设置为全局变量  鼠标切换图片后，自动播放下一张，需要将两个索引设为相同值</p>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时时钟</title>
+	<style type="text/css" media="screen">
+		.box{
+			width:280px;
+			text-align: center;
+			padding:50px 10px;
+			margin:50px auto;
+			background: #666;
+		}
+		button{
+			display:block;
+			margin-top: 30px;
+			width:280px;
+			height:50px;
+			font-size: 20px;
+		}
+		span{
+			padding:5px;
+			background: #fff;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var num = document.getElementsByTagName("span");
+			var btn = document.getElementsByTagName("button")[0];
+			num[0].innerText = 0;
+			num[1].innerText = 10;
+
+			var mintues = parseInt(num[0].innerText);
+			var seconds = parseInt(num[1].innerText);
+			var time = null;
+
+			btn.onclick = function(){
+				time = setInterval(startTime,1000);
+				console.log(mintues,seconds);
+			}
+
+			function startTime(){
+				if(seconds === 0){
+					mintues--;
+					seconds = 60;
+				}else{
+					seconds--;
+				}
+				num[0].innerText = mintues;
+				num[1].innerText = seconds;
+				if(seconds === 0 && mintues === 0){
+					clearInterval(time);
+				}
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<span></span>
+		分钟
+		<span></span>
+		秒
+		<button type="">启动</button>
+	</div>
+</body>
+</html>

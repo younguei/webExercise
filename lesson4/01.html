@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setTimeout应用</title>
+	<style type="text/css" media="screen">
+		*{
+			box-sizing: border-box;
+		}
+		.box{
+			width:958px;
+			
+			margin:10px auto;
+		}
+		ul{
+			padding:0;
+			margin:0;
+			height:42px;
+			line-height: 40px;
+			padding:0px 10px;
+			list-style: none;
+			overflow:hidden;
+			border-radius: 15px;
+			border:1px solid #ccc;
+			background: #4e7dad;
+		}
+		ul li{
+			float:left;
+			width:117px;
+			text-align: center;
+		}
+		ul li a{
+			display: block;
+			font-size: 12px;
+			margin:5px 3px;
+			line-height: 30px;
+			width:111px;
+			height: 30px;
+			text-decoration: none;
+			color:#fff;
+		}
+		ul li a:hover{
+			background-color: #c1bfbf;
+			color:#fff;
+			font-weight: bolder;
+			border-radius: 10px;
+			font-size: 14px;
+
+		}
+		ul li+li{
+			border-left:1px solid #fff;
+		}
+
+		/*子菜单栏*/
+		.subnav{
+			display: block;
+			position: relative;
+			height: 29px;
+			top:3px;
+			left:127px;
+			display: none;
+		}
+		.subnav p{
+			padding:2px 10px;
+			margin:0;
+			display: inline-block;
+			background-color: #fff;
+			border-radius: 5px;
+			border:1px solid #4e7dad;
+		}
+		.subnav p a{
+			display: inline-block;
+			font-size: 12px;
+			height: 21px;
+			line-height: 21px;
+			margin:0 5px;
+			color:#4e7dad;
+			padding:0 2px;
+			text-decoration: none;
+		}
+		.subnav .triangle{
+			width:0;
+			height: 0;
+			position: absolute;
+			left:50px;
+			top:-14px;
+			border-style: solid;
+			border-width: 7px;
+			border-color: transparent transparent #4e7dad transparent;
+		}
+		.subnav .triangle div{
+			width:0;
+			height: 0;
+			position: absolute;
+			left:-6px;
+			top:-4px;
+			border-style: solid;
+			border-width: 6px;
+			border-color: transparent transparent #fff transparent;
+		}
+		
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var listItem = getByClass("subnav");
+			var navItem = document.getElementsByTagName("a");
+			var nav = document.getElementById("nav");
+			// var triangle = getByClass("triangle");
+			for(var i=1;i<8;i++){
+				navItem[i].index = i;
+				navItem[i].onmouseover = function(){
+					listItem[this.index-1].style.display = "inline-block";
+					listItem[this.index-1].style.left = 120*(this.index)+"px";
+
+					// console.log(nav.clientWidth);
+					// console.log(listItem[this.index-1].offsetLeft );
+					// console.log(listItem[this.index-1].clientWidth);
+					// console.log(nav.clientWidth-listItem[this.index-1].offsetLeft-listItem[this.index-1].clientWidth);
+					
+					if(nav.clientWidth-listItem[this.index-1].offsetLeft-listItem[this.index-1].clientWidth <= -100){
+						listItem[this.index-1].style.left = nav.clientWidth - listItem[this.index-1].clientWidth + "px";
+							// triangle[this.index-1].style.right = "50px";
+					}
+				};
+				navItem[i].onmouseout = function(){
+					listItem[this.index-1].style.display = "none";
+				}
+			}
+		}
+		function getByClass(targetName){
+			var arr = document.getElementsByTagName("*");
+			var target = [];
+			for(var i=0;i<arr.length;i++){
+				if(arr[i].className === targetName){
+					target.push(arr[i]);
+				}
+			}
+			return target;
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="nav"  id="nav">
+			<li><a href="#">站长之家</a></li>
+			<li><a href="#">行业资讯</a></li>
+			<li><a href="#">站长在线</a></li>
+			<li><a href="#">网站运营</a></li>
+			<li><a href="#">设计在线</a></li>
+			<li><a href="#">网络编程</a></li>
+			<li><a href="#">联盟咨询</a></li>
+			<li><a href="#">服务器</a></li>
+		</ul>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p> 
+                <span>
+                    <a href="javascript:;">业界动态</a>|
+                    <a href="javascript:;">收购融资</a>|
+                    <a href="javascript:;">门户动态</a>|
+                    <a href="javascript:;">搜索引擎</a>|
+                    <a href="javascript:;">网络游戏</a>|
+                    <a href="javascript:;">电子商务</a>|
+                    <a href="javascript:;">广告传媒</a>|
+                    <a href="javascript:;">厂商开发</a>
+                </span>
+            </p>
+		</div>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p>        	
+               <span>
+                   <a href="javascript:;">站长报道</a>|
+                   <a href="javascript:;">好站推荐</a>|
+                   <a href="javascript:;">站长聚会</a>|
+                   <a href="javascript:;">站长访谈</a>|
+                   <a href="javascript:;">站长茶馆</a>|
+                   <a href="javascript:;">网站排行</a>
+               </span>
+
+            </p>
+		</div>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p>        	
+                <span>
+                    <a href="javascript:;">建站经验</a>|
+                    <a href="javascript:;">策划盈利</a>|
+                    <a href="javascript:;">搜索优化</a>|
+                    <a href="javascript:;">网站推广</a>|
+                    <a href="javascript:;">免费资源</a>
+
+                </span>
+            </p>
+		</div>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p>        	
+                <span>
+                   <a href="javascript:;">酷站推荐</a>|
+                   <a href="javascript:;">网页设计</a>|
+                   <a href="javascript:;">WEB标准</a>|
+                   <a href="javascript:;">视频处理</a>|
+                   <a href="javascript:;">设计活动</a>
+
+                </span>
+            </p>
+		</div>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p>        	
+                <span>
+                    <a href="javascript:;">Asp编程</a>|
+                    <a href="javascript:;">Php编程</a>|
+                    <a href="javascript:;">.Net编程</a>|
+                    <a href="javascript:;">Xml编程</a>|
+                    <a href="javascript:;">Access</a>|
+                    <a href="javascript:;">Mssql</a>|
+                    <a href="javascript:;">Mysql</a>
+
+                </span>
+            </p>
+		</div>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p>        	
+                <span>
+                    <a href="javascript:;">联盟动态</a>|
+	                <a href="javascript:;">联盟介绍</a>|
+	                <a href="javascript:;">联盟点评</a>|
+	                <a href="javascript:;">网赚技巧</a>
+
+                </span>
+            </p>
+		</div>
+		<div class="subnav">
+			<!-- <div class="triangle"><div></div></div> -->
+			<p>        	
+                <span>
+                    <a href="javascript:;">Web服务器</a>|
+                    <a href="javascript:;">Ftp服务器</a>|
+                    <a href="javascript:;">Mail服务器</a>|
+                    <a href="javascript:;">Dns服务器</a>|
+                    <a href="javascript:;">Win服务器</a>|
+                    <a href="javascript:;">Linux服务器</a>|
+                    <a href="javascript:;">安全防护</a>|
+                    <a href="javascript:;">虚拟主机</a>
+
+                </span>
+            </p>
+		</div>
+	</div>
+	<div class="note">
+		<p>1. 怎么实现右边框 的这种样式</p>
+		<p>2. 怎么实现对话框箭头效果</p>
+		<p>解答：实现这种效果可以使用嵌套div 相对定位来实现  但是由于相对定位为题 一直无法定位到正确位置  所以这部分代码注释掉了url</p>
+		<p>3. 根据class来筛选dom节点 怎么封装函数</p>
+		<p>4. 根据右侧距离调整 subnav</p>
+		<p>解答：获取元素距离屏幕左边的距离 x.offsetLeft 上侧距离x.offsetTop</p>
+		<p>获取元素的宽度 x.clientWidth</p>
+	</div>
+</body>
+</html>
