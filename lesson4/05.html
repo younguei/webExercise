@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css函数--设置/读取对象的属性</title>
+    <style media="screen">
+        .box{
+            width:400px;
+            height: 250px;
+            border:1px solid orange;
+            margin:10px auto;
+            background: #fef4eb;
+            font-size: 0;
+        }
+        .box span{
+            color:#fff;
+            display: inline-block;
+            background: orange;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 16px;
+            padding:5px;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var aSpan = document.getElementsByTagName('span');
+            var box = document.getElementsByTagName('div')[0];
+            aSpan[0].onclick = function(){
+                alert("width:"+css(box,"width")+"\nheight:"+css(box,"height")+"\nbackgroundColor:"+css(box,"backgroundColor"));
+            };
+            aSpan[1].onclick = function(){
+                css(box,{width:"330px",height:"100px",borderColor:"#0084ff",backgroundColor:"#eff8ff"});
+            }
+            aSpan[2].onclick = function(){
+                css(box,{width:"400px",height:"250px",borderColor:"orange",backgroundColor:"#fef4eb"});
+            }
+        }
+
+        function css(obj,attr,value){
+            if(arguments.length > 2){
+                obj.style[attr] = value;
+                return true;
+                // console.log(3);
+            }else{
+                if(typeof attr === "object"){
+                    // 假如第二个参数为对象 表示批量设置css属性
+                    for(var i in attr){
+                        obj.style[i] = attr[i];
+                    }
+                }else{
+                    // 假若只有两个参数 且第二个参数不为对象 表示获取属性的值
+                    return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <span>Get Style</span>
+        <span>Set Style</span>
+        <span>Default Style</span>
+    </div>
+    <div class="note">
+        <p>1. getComputedStyle(对象).属性</p>
+        <p>2. currentStyle: 代表了在全局样式表、内嵌样式和行内样式中指定的对象格式和样式。</p>
+        <p>例子: getComputedStyle(obj).width   obj.currentStyle.width</p>
+        <p>区别: getComputedStyle该属性是兼容火狐谷歌，不兼容IE</p>
+        <p>区别: currentStyle该属性只兼容IE，不兼容火狐和谷歌</p>
+        <p>解决兼容问题：obj.currentStyle? obj.currentStyle.width:getComputedStyle(obj).width</p>
+        <p>3. alert输出内容换行显示 alert("this is a \n test)</p>
+        <p><strong>4. 关于原生书写设置样式的函数 判断第二个参数是否为对象 来批量设置css样式</strong></p>
+    </div>
+</body>
+</html>

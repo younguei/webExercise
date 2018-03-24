@@ -34,4 +34,9 @@
 #### 第四课
 1. [  setTimeout应用](https://younguei.github.io/webExercise/lesson4/01.html)
 2. [自动播放一幻灯片效果](https://younguei.github.io/webExercise/lesson4/02.html)
-3. [ 自动改变方向一幻灯片效果](https://younguei.github.io/webExercise/lesson4/03.html)
+3. [自动改变方向一幻灯片效果](https://younguei.github.io/webExercise/lesson4/03.html)
+4. [agruments应用-求出函数参数的总和](https://younguei.github.io/webExercise/lesson4/04.html)
+5. [css函数--设置/读取对象的属性](https://younguei.github.io/webExercise/lesson4/05.html)
+6. [当前输入框高亮显示](https://younguei.github.io/webExercise/lesson4/06.html)
+7. [数组练习:各种数组方法的使用](https://younguei.github.io/webExercise/lesson4/07.html)
+8. [事件练习：封装兼容性添加、删除事件的函数](https://younguei.github.io/webExercise/lesson4/08.html)

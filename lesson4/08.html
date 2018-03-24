@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件练习：封装兼容性添加、删除事件的函数</title>
+    <style media="screen">
+        .box{
+            border: 1px dashed green;
+            color:green;
+            font-size: 14px;
+            background: #CCC;
+        }
+        button+button{
+            margin-left: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        var EventUtil = {
+            addHandler: function(oElement,sEvent,fnHandler){
+                oElement.addEventListener?oElement.addEventListener(sEvent,fnHandler,false):oElement.attachEvent('on'+sEvent,fnHandler);
+            },
+            removeHandler: function(oElement,sEvent,fnHandler){
+                oElement.removeEventListener?oElement.removeEventListener(sEvent,fnHandler,false):oElement.detachEvent('on'+sEvent,fnHandler);
+            }
+        }
+
+        window.onload = function(){
+            var aBtn = document.getElementsByTagName("button");
+            EventUtil.addHandler(aBtn[1],'click',test);
+            EventUtil.addHandler(aBtn[2],'click',test3);
+
+
+
+            function test(){
+                aBtn[0].innerText = "我可以点击了";
+                EventUtil.addHandler(aBtn[0],'click',test2);
+            }
+            function test2(){
+                alert("事件绑定成功");
+            }
+            function test3(){
+                aBtn[0].innerText = "毫无用处的按钮";
+                EventUtil.removeHandler(aBtn[0],'click',test2);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="box">
+        <pre>
+    &lt;script type="text/javascript"&gt;
+    var EventUtil = {
+        addHandler: function(oElement,sEvent,fnHandler){
+            oElement.addEventListener?oElement.addEventListener(sEvent,fnHandler,false):oElement.attachEvent('on'+sEvent,fnHandler);
+        },
+        removeHandler: function(oElement,sEvent,fnHandler){
+            oElement.removeEventListener?oElement.removeEventListener(sEvent,fnHandler,false):oElement.detachEvent('on'+sEvent,fnHandler);
+        }
+    }
+        </pre>
+    </div>
+    <button>毫无用处的按钮</button>
+    <button>绑定click</button>
+    <button>解除绑定</button>
+    <div class="note">
+        <h2>事件绑定</h2>
+        <ol>
+            <li>在HTML元素中直接绑定 元素和事件放在一起 不利于后期维护 <button onclick="alert('this is a test')">按钮</button></li>
+            <li>在js代码中绑定 先获取DOM元素 将获取的元素绑定事件 可以使js和html代码分离</li>
+            <li>使用事件监听绑定事件</li>
+        </ol>
+        <h3>事件监听绑定事件</h3>
+        <p>
+            <storng>事件监听的好处:</storng><br>
+            普通的事件绑定，只会执行最后绑定的事件<br>
+            <strong>事件监听可以绑定多个事件 </strong>
+        </p>
+        <p>事件监听：捕获阶段 目标阶段 冒泡阶段</p>
+        <p>W3C规范 ie8之前不兼容 所以开发的时候要考虑兼容的问题</p>
+        <p>
+            <strong>W3C规范</strong>
+            element.addEventListener(event,function,useCapture);
+            <br> event: 必须 事件名  <strong>事件名 注意没有on</strong><br> function 必须 事件触发后执行的函数 <br>useCapture 可选 指定事件是否在捕获或冒泡阶段执行 true捕获 false冒泡 默认冒泡阶段捕获
+            <br>
+            element.removeEventListener(event,function,useCapture);
+        </p>
+        <p>
+            <strong>IE标准</strong>
+            element.attachEvent(event,function) <br>
+            event: 必须 事件类型 <strong>注意 事件类型 需要添加on 不是事件名</strong><br>
+            function 必须 事件触发后执行的函数<br>
+            element.detachEvent(event,function) <br>
+        </p>
+    </div>
+</body>
+</html>

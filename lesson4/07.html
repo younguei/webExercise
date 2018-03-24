@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组练习:各种数组方法的使用</title>
+    <style media="screen">
+        .box div{
+            padding:10px;
+            color:green;
+            background: #f0f0f0;
+            font-size:12px;
+            border:1px dashed black;
+            margin:20px 0;
+        }
+        .box button{
+            margin-right: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var arr1 = ['January(1)','February(2)','March(3)','April(4)','May(5)','June(6)','July(7)','Aguest(8)','September(9)','October(10)','November(11)','December(12)']
+            var arr2 = [0,1,2,3,4,5,6,7,8,9];
+            var arr3 = ['red','green','blue','white','yellow','black','brown'];
+            var aBtn = document.getElementsByTagName("button");
+            var div1 = document.getElementById("method1");
+            var div2 = document.getElementById("method2");
+            var div3 = document.getElementById("method3");
+            div1.innerText = arr1;
+            div2.innerText = arr2;
+            div3.innerText = arr3;
+            let num;
+            console.log(num);
+            aBtn[0].onclick = function(){
+                if(num === undefined){
+                    num = arr1.shift();
+                    div1.innerText = arr1;
+                    this.innerText = "添加January(1)";
+                }else{
+                    arr1.unshift(num);
+                    num = undefined;
+                    div1.innerText = arr1;
+                    this.innerText = "删除January(1)";
+                }
+            }
+            let num2;
+            aBtn[1].onclick = function(){
+                if(num2 === undefined){
+                    num2 = arr1.pop();
+                    div1.innerText = arr1;
+                    this.innerText = "添加December(12)";
+                }else{
+                    arr1.push(num2);
+                    num2 = undefined;
+                    div1.innerText = arr1;
+                    this.innerText = "删除December(12)";
+                }
+            }
+
+            let newArr = [...arr2];
+            // 复制事件还有些问题
+            aBtn[2].onclick = function(){
+                newArr.push(arr2);
+                div2.innerText = newArr;
+            }
+            aBtn[3].onclick = function(){
+                div2.innerText = arr2;
+            }
+
+            let newArr3 = [...arr3];
+            aBtn[4].onclick = function(){
+                div3.innerText = arr3;
+            }
+            aBtn[5].onclick = function(){
+                newArr3.splice(0,3);
+                div3.innerText = newArr3;
+            }
+            aBtn[6].onclick = function(){
+                newArr3.splice(1,2);
+                div3.innerText = newArr3;
+            }
+            aBtn[7].onclick = function(){
+                newArr3.splice(2,0,"orange",'purple');
+                div3.innerText = newArr3;
+            }
+            aBtn[8].onclick = function(){
+                newArr3.splice(1,2,"#009900",'#0000ff');
+                div3.innerText = newArr3;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div id="method1"></div>
+        <button>删除January(1)</button><button>删除December(12)</button>
+        <div id="method2"></div>
+        <button>复制</button><button>还原</button>
+        <div id="method3"></div>
+        <button>还原</button><button>删除前三项</button><button>删除第二至三项</button><button>在第二项后插入(orange,purple)</button><button>替换第二至第三项</button>
+    </div>
+    <div class="note">
+        <h4>splice实例方法是操作数组的 split是操作字符串的 容易记混</h4>
+        <p><strong>splice 英文意思 拼接  split 英文意思 分裂</strong></p>
+        <p>1. arr.splice(index,howmany,item1,....,itemx)  index必须 规定添加/删除项目的位置 howmany删除的个数 设置为0表示不会删除项目 item可选 表示插入的项目</p>
+        <p><strong>2. split()方法 用于把一个字符串分割为字符串数组 stringObject.split(separator，howmany) separator为字符串或正则表示从该位置切割 howmany返回子串的长度</strong></p>
+        <p><strong>"this is a test".split(" ")  返回数组['this','is','a','test']</strong></p>
+        <p>3. arrayObject.join(separator) 可选参数 省略则返回为逗号分隔数组内元素拼接的字符串</p>
+    </div>
+</body>
+</html>
